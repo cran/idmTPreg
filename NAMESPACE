@@ -1,0 +1,10 @@
+import(survival, foreach , doParallel)
+importFrom("graphics", "lines", "par", "plot")
+importFrom("stats", "binomial", "coefficients", "complete.cases", "contrasts", "is.empty.model", "model.matrix", "na.omit", "pnorm","quantile", "time")
+importFrom("utils", "tail", "methods")
+
+
+export( TPreg , iddata, print.TPreg, summary.TPreg, plot.TPreg)
+S3method(print, TPreg)
+S3method(summary, TPreg)
+S3method(plot, TPreg)

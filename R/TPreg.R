@@ -1,5 +1,5 @@
 TPreg <-
-function(formula, data, link, s = 0, t = NULL, R = 199, by = NULL, trans)
+function(formula, data, link, s = 0, t = NULL, R = 199, by = NULL, trans, ncores = NULL)
 {
   if (missing(data)) 
     stop("Argument 'data' is missing with no default")
@@ -47,6 +47,7 @@ function(formula, data, link, s = 0, t = NULL, R = 199, by = NULL, trans)
   if(is.null(t)){
     t = max(comdata$Zt[comdata$delta1 == 1], na.rm = T)
   }
+  
   if(t <= s || s<0){
     stop("argument 's' must be smaller than 't' and larger than 0")
   }
@@ -91,6 +92,11 @@ function(formula, data, link, s = 0, t = NULL, R = 199, by = NULL, trans)
         return(Shatx)
       }
     }
+
+    if(is.null(ncores)){
+    ncores = 1
+    }
+    registerDoParallel(cores = ncores)
     co <- vector("list", 4)
     names(co) <- c("co11", "co12", "co13", "co23")
     if(trans == "11" || trans == "all" ){
@@ -105,7 +111,6 @@ function(formula, data, link, s = 0, t = NULL, R = 199, by = NULL, trans)
       if(vec.t11[L.t11] >= M11) 
         stop("for the tansition '11' the effects can not be estimated for the given 't'(large 't' returns all responses equal to 0) ")
       iii <-NULL
-      registerDoParallel(cores = 4)
       eta.list <- lapply( vec.t11, function(x){ 
         jumptime <- x
         res <- (data1$Zt > jumptime)       

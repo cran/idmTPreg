@@ -8,3 +8,4 @@ export( TPreg , iddata, print.TPreg, summary.TPreg, plot.TPreg)
 S3method(print, TPreg)
 S3method(summary, TPreg)
 S3method(plot, TPreg)
+

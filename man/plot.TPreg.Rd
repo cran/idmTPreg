@@ -23,17 +23,21 @@ confidence bands along time, from time \code{s} to time \code{t}.
 }
 
 \seealso{
- \code{\link{TPreg}}, \code{\link{print.TPreg}}, and \code{\link{summary.TPreg}} as generic functions.
+ \code{\link{TPreg}}, and generic functions \code{\link{print.TPreg}}, and \code{\link{summary.TPreg}}.
 }
 
 \examples{
-\dontrun{
 data(colonTPreg)
 
-co13 <- TPreg( ~ Age + Nodes + treatment, colonTPreg, link = "logit", s = 0, R = 99, t = 365.24*7,
- trans = "13" )
-plot(co13, covar = "Nodes", Ylim = list(c(-1,1)))
-plot(co13, covar = c("Age", "Nodes", "treatmentLev", "treatmentLev.5FU"), Ylim = list(c(-0.1,0.1),
-c(-1,1), c(-2,2), c(-2,2)))
+co13 <- TPreg( ~ Age + Nodes + treatment, colonTPreg, link = "logit", s = 0, R = 9, t = 1200,
+  by = 110, trans = "13", ncores = 1)
+plot(co13, covar = "Nodes", Ylim = list(c(-0.5,0.5)))
+
+ \donttest{
+co11 <- TPreg( ~ Age + Nodes + treatment, colonTPreg, link = "logit", s = 0, by = 10,
+  R = 199, t = 365*5, trans = "11")
+plot(co11, covar = c("Age", "Nodes", "treatmentLev", "treatmentLev.5FU"),
+Ylim = list(c(-0.1,0.1), c(-0.5,0.5), c(-2,2), c(-2,2)))
 }
+
 }

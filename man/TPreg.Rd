@@ -1,4 +1,3 @@
-
 \name{TPreg}
 \alias{TPreg}
 \title{
@@ -9,11 +8,9 @@ Regression Modeling of Transition Probabilities in a Progressive Illness-Death M
  Fits a semi-parametric regression model to estimate the effects on
 transition probabilities in a (possibly non-Markov) progressive illness-death model for a sequence of time.
 }
-
 \usage{
-TPreg(formula, data, link, s = 0, t = NULL, R = 199, by = NULL, trans)
+TPreg(formula, data, link, s = 0, t = NULL, R = 199, by = NULL, trans, ncores = NULL)
 }
-
 
 \arguments{
   \item{formula}{
@@ -36,10 +33,10 @@ the Future time for the transition probabilities; default is \code{NULL} which i
 the number of bootstrap replicates. Default is 199. 
 }
   \item{by}{
- number: increment of the sequence form time \code{s} to time \code{t}.The default is \code{NULL} which is
+ number: increment of the sequence from time \code{s} to time \code{t}.The default is \code{NULL} which is
 \eqn{\lfloor (\max({ Zt}) - \min({Zt}))/q_{0.01}({ Zt }) \rfloor} ,
 where \eqn{q_{0.01}(.)} is the sample quantile corresponding to 0.01 probability and \eqn{\lfloor x\rfloor} gives
-the largest integer less than or equal to \eqn{x}. A binomial regression at every by 92th time between \code{s} and 
+the largest integer less than or equal to \eqn{x}. A binomial regression at every \code{by}th time between \code{s} and 
 \code{t} is performed. \code{by=1} reports all binomial regression results for each jump time,  corresponding to
  the specified transition(s),
 between \code{s} and \code{t}.
@@ -48,10 +45,13 @@ a relatively big \code{by} is recommended.
 }
   \item{trans}{
 the possible transition(s) for a progressive illness-death model. For \code{trans} argument there are five options:  \code{"11"},  \code{"12"},  \code{"13"}, \code{"23"}, and  \code{"all"}.
- 
+ }
+  \item{ncores}{
+the number of cores to use for parallel execution. Default is the number of CPU cores on the current host.
 }
 }
-\value{
+
+    \value{
 \code{TPreg} returns an object of class {\code{TPreg}}.
  An object of class {\code{TPreg}} is a list containing at least the following components: 
 
@@ -81,12 +81,10 @@ in the progressive illness-death model}, Statistics in Medicine \bold{36}, \eqn{
 }
 
 \examples{
-\dontrun{
 data(colonTPreg)
 
-co11 <- TPreg( ~ Age + Nodes + treatment, colonTPreg, link = "logit", s = 20, R = 99, t = 200,
- trans = "11" )
+co11 <- TPreg( ~ Age + Nodes + treatment, colonTPreg, link = "logit", s = 50, R = 19, t = 200,
+trans = "11", ncores = 1)
 co11
 summary(co11)
-}
 }

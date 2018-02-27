@@ -24,16 +24,16 @@ first column of these components.
  \item{Call }{the matched call.}
  \item{Transition(s) }{the specified transition(s).}
  \item{(s,t)}{the vector of current time and future time for the transition probabilities.}
- \item{ Coefficients }{the matrix of selected jump times and  their corresponding coefficients.}
+ \item{Coefficients }{the matrix of selected jump times and  their corresponding coefficients.}
  \item{Standard Errors }{the matrix of selected jump times and their corresponding standard errors.}
  \item{Lower limits }{the matrix of selected jump times and their corresponding lower confidence bands.}
- \item{ Upper limits }{the matrix of selected jump times and their corresponding upper confidence bands.}
- \item{ p.values }{the matrix of selected jump times and their corresponding p-values.}
+ \item{Upper limits }{the matrix of selected jump times and their corresponding upper confidence bands.}
+ \item{p.values }{the matrix of selected jump times and their corresponding p-values.}
  
-for \code{Transitions="11", "12", "13", "23"},  \code{summary.TPreg} gives \code{Coefficients}, \code{Standard Errors}, \code{Lower limits}, \code{Upper limits}, and \code{p-values} for each of \code{Transition 11}, \code{Transition 12}, \code{Transition 13} and \code{Transition 23}. }
+for \code{Transitions = "11", "12", "13", "23"},  \code{summary.TPreg} gives \code{Coefficients}, \code{Standard Errors}, \code{Lower limits}, \code{Upper limits}, and \code{p-values} for each of \code{Transition 11}, \code{Transition 12}, \code{Transition 13} and \code{Transition 23}. }
 
 \seealso{
- \code{\link{TPreg}}, \code{\link{print.TPreg}}, and \code{\link{plot.TPreg}} as generic functions.
+ \code{\link{TPreg}},  and  generic functions \code{\link{print.TPreg}} and \code{\link{plot.TPreg}}.
 }
 \examples{
 ## For examples see example TPreg.

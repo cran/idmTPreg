@@ -26,10 +26,10 @@ The \code{coefficients} component of the result gives the estimated coefficients
     \item{Call}{ the matched call.}
     \item{Transition }{the specified transition(s).}
     \item{(s,t)}{ the vector of current time and future time for the transition probabilities. }
-    \item{ Coefficients}{ the matrix of coefficients, standard errors, lower confidence limits, upper confidence limits and p-values.}
+    \item{Coefficients}{ the matrix of coefficients, standard errors, lower confidence limits, upper confidence limits and p-values.}
  Also, \code{trans= "all"} will return \code{Coefficients 11}, \code{Coefficients 12}, \code{Coefficients 13}, and \code{Coefficients 23}.}
 \seealso{
- \code{\link{TPreg}}, \code{\link{summary.TPreg}}, and \code{\link{plot.TPreg}} as generic functions.
+ \code{\link{TPreg}}, and  generic functions \code{\link{summary.TPreg}}, and \code{\link{plot.TPreg}}.
 }
 \examples{
 ## For examples see example TPreg.
